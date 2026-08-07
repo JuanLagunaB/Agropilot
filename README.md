@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# AGROPILOT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Aprende sobre el campo jugando
 
-## Available Scripts
+Agropilot es un juego educativo de simulacion agricola que te permite aprender sobre agricultura, ganaderia y sostenibilidad de una manera divertida e interactiva.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Descripcion
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Agropilot es un simulador educativo donde los jugadores pueden explorar el mundo agricola, conocer practicas sostenibles y descubrir como se cultivan los alimentos que consumimos diariamente. A traves de diferentes misiones y actividades, el jugador adquiere conocimientos reales sobre el campo mientras se divierte.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Caracteristicas
 
-### `npm test`
+- **Simulacion Realista** - Experimenta la agricultura con mecanicas reales de cultivo, riego y cosecha.
+- **Mundo Abierto** - Explora extensos campos, valles y granjas en un mundo completamente abierto.
+- **Pesca** - Relajate pescando en el lago y encuentra peces unicos.
+- **Economia** - Vende tus cultivos, compra herramientas y semillas.
+- **NPC con IA** - Interactua con Fermin, un NPC integrado con inteligencia artificial que te ensena sobre agricultura.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Capturas
 
-### `npm run build`
+| Tienda | Inventario | Misiones |
+|--------|------------|----------|
+| ![Tienda](public/Agropilot-1.png) | ![Inventario](public/Inventario.png) | ![Misiones](public/Misiones.png) |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tecnologias
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React 19
+- React Router
+- CSS3 con variables y animaciones
+- GitHub Pages (despliegue)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instalacion
 
-### `npm run eject`
+```bash
+# Clonar el repositorio
+git clone https://github.com/JuanLagunaB/agropilot.git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Entrar al directorio
+cd agropilot
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Instalar dependencias
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Ejutar en modo desarrollo
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+La aplicacion estara disponible en `http://localhost:3000`
 
-## Learn More
+## Despliegue
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# Construir para produccion
+npm run build
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Desplegar en GitHub Pages
+npm run deploy
+```
 
-### Code Splitting
+## Autores
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Niray Yussifh Munoz Amador**
+- **Juan David Laguna Bayona**
 
-### Analyzing the Bundle Size
+## Licencia
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Proyecto educativo - Todos los derechos reservados.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Hecho con React 
