@@ -1,0 +1,147 @@
+/* ================================
+   CONTACT PAGE
+   ================================ */
+.contact-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+}
+
+/* NAVBAR */
+.contact-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #222;
+}
+
+.contact-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  color: #4ade80;
+  font-size: 1.8rem;
+}
+
+.back-btn {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #a0a0a0;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid #222;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  color: #4ade80;
+  border-color: #4ade80;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+}
+
+/* CONTENT */
+.contact-content {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.contact-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 40%, rgba(74, 222, 128, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%, rgba(74, 222, 128, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(74, 222, 128, 0.03) 0%, transparent 40%),
+    linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+}
+
+/* PARTICLES */
+.contact-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.contact-particle {
+  position: absolute;
+  bottom: -10px;
+  width: 3px;
+  height: 3px;
+  background: #4ade80;
+  border-radius: 50%;
+  opacity: 0;
+  animation: contactFloatUp linear infinite;
+}
+
+@keyframes contactFloatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0);
+    opacity: 0;
+  }
+}
+
+/* FORM CONTAINER */
+.contact-info-grid {
+  position: relative;
+  z-index: 10;
+  padding: 140px 40px 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.contact-form-container h2,
+.contact-form-correo h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #4ade80;
+  margin-bottom: 24px;
+}
+
+.contact-form-container p,
+.contact-form-correo p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #a0a0a0;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
