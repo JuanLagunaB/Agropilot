@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Portafolio-/static/css/main.e32d88be.css",
-    "main.js": "/Portafolio-/static/js/main.e10dd4ae.js",
-    "static/js/453.ef018a59.chunk.js": "/Portafolio-/static/js/453.ef018a59.chunk.js",
-    "index.html": "/Portafolio-/index.html",
-    "main.e32d88be.css.map": "/Portafolio-/static/css/main.e32d88be.css.map",
-    "main.e10dd4ae.js.map": "/Portafolio-/static/js/main.e10dd4ae.js.map",
-    "453.ef018a59.chunk.js.map": "/Portafolio-/static/js/453.ef018a59.chunk.js.map"
+    "main.css": "/agropilot/static/css/main.e32d88be.css",
+    "main.js": "/agropilot/static/js/main.bad5df2a.js",
+    "static/js/453.ef018a59.chunk.js": "/agropilot/static/js/453.ef018a59.chunk.js",
+    "index.html": "/agropilot/index.html",
+    "main.e32d88be.css.map": "/agropilot/static/css/main.e32d88be.css.map",
+    "main.bad5df2a.js.map": "/agropilot/static/js/main.bad5df2a.js.map",
+    "453.ef018a59.chunk.js.map": "/agropilot/static/js/453.ef018a59.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e32d88be.css",
-    "static/js/main.e10dd4ae.js"
+    "static/js/main.bad5df2a.js"
   ]
 }
