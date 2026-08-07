@@ -1,9 +1,3 @@
-# Juan David - Portafolio
+#Agropilot
 
-Desarrollador Web | Unity | Fronted
-
-Proyectos:
-
-Agropilot:https://juanlagunab.github.io/Portafolio-/
-
-
+Link:https://juanlagunab.github.io/Agropilot/
