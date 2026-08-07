@@ -3,12 +3,14 @@ import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import Contact from "./Contact";
 import "./App.css";
 
+const BASE = process.env.PUBLIC_URL;
+
 const imagenesGaleria = [
-  { id: 1, src: '/Agropilot-1.png', tag: 'Tienda', alt: 'Agropilot Screenshot 1' },
-  { id: 2, src: '/Inventario.png', tag: 'Inventario ', alt: 'Agropilot Screenshot 2' },
-  { id: 3, src: '/Misiones.png', tag: 'Misiones', alt: ' Agropilot Screenshot 3' }, 
-  { id: 4, src: '/NPC.png', tag: 'NPC', alt: 'Agropilot Screenshot 4' },
-  { id: 5, src: '/Panel educativo.png', tag: 'Panel educativo', alt: 'Agropilot Screenshot 5' },
+  { id: 1, src: `${BASE}/Agropilot-1.png`, tag: 'Tienda', alt: 'Agropilot Screenshot 1' },
+  { id: 2, src: `${BASE}/Inventario.png`, tag: 'Inventario ', alt: 'Agropilot Screenshot 2' },
+  { id: 3, src: `${BASE}/Misiones.png`, tag: 'Misiones', alt: ' Agropilot Screenshot 3' }, 
+  { id: 4, src: `${BASE}/NPC.png`, tag: 'NPC', alt: 'Agropilot Screenshot 4' },
+  { id: 5, src: `${BASE}/Panel educativo.png`, tag: 'Panel educativo', alt: 'Agropilot Screenshot 5' },
 ];
 
 
@@ -149,7 +151,7 @@ function App() {
           </div>
         </div>
         <div className="hero-image">
-          <img src="/Campo.png" alt="Agropilot Game" />
+          <img src={`${BASE}/Campo.png`} alt="Agropilot Game" />
           <div className="hero-image-glow"></div>
         </div>
       </section>
@@ -159,7 +161,7 @@ function App() {
         <div className="section-container">
           <div className="about-grid">
             <div className="about-image">
-              <img src="/Juego.png" alt="Agropilot Gameplay" />
+              <img src={`${BASE}/Juego.png`} alt="Agropilot Gameplay" />
               <div className="about-image-border"></div>
             </div>
             <div className="about-content">
