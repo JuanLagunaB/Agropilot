@@ -2,6 +2,8 @@
 
 Desarrollador Web | Unity | Fronted
 
-🔗 Ver portafolio en vivo:
+Proyectos:
+
+Agropilot:https://juanlagunab.github.io/Portafolio-/
 
 
