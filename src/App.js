@@ -25,6 +25,12 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollTo = (id) => {
+    setMenuOpen(false);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   const features = [
     {
       icon: "",
@@ -69,7 +75,7 @@ function App() {
       {/* NAVBAR */}
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="nav-container">
-          <a href="#hero" className="nav-logo">
+          <a href="#/" className="nav-logo" onClick={() => scrollTo("hero")}>
             <span className="logo-icon"></span> AGROPILOT
           </a>
           <button
@@ -82,27 +88,27 @@ function App() {
           </button>
           <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
             <li>
-              <a href="#hero" onClick={() => setMenuOpen(false)}>
+              <a href="#/" onClick={() => scrollTo("hero")}>
                 Inicio
               </a>
             </li>
             <li>
-              <a href="#about" onClick={() => setMenuOpen(false)}>
+              <a href="#/" onClick={() => scrollTo("about")}>
                 Sobre
               </a>
             </li>
             <li>
-              <a href="#features" onClick={() => setMenuOpen(false)}>
+              <a href="#/" onClick={() => scrollTo("features")}>
                 Caracteristicas
               </a>
             </li>
             <li>
-              <a href="#media" onClick={() => setMenuOpen(false)}>
+              <a href="#/" onClick={() => scrollTo("media")}>
                 Media
               </a>
             </li>
             <li>
-              <a href="#download" className="nav-cta" onClick={() => setMenuOpen(false)}>
+              <a href="#/" onClick={() => scrollTo("download")} className="nav-cta">
                 Jugar Ahora
               </a>
             </li>
@@ -133,11 +139,11 @@ function App() {
             ganaderia y sostenibilidad de una manera inmersiva y divertida.
           </p>
           <div className="hero-actions">
-            <a href="#download" className="btn btn-primary">
+            <a href="#/" className="btn btn-primary" onClick={() => scrollTo("download")}>
               <span className="btn-glow"></span>
               Jugar
             </a>
-            <a href="#media" className="btn btn-secondary">
+            <a href="#/" className="btn btn-secondary" onClick={() => scrollTo("media")}>
               Ver imagenes   &#9654;
             </a>
           </div>
@@ -284,10 +290,10 @@ function App() {
             </div>
             <div className="footer-links">
               <h4>Navegacion</h4>
-              <a href="#hero">Inicio</a>
-              <a href="#about">Sobre</a>
-              <a href="#features">Caracteristicas</a>
-              <a href="#media">Galeria</a>
+              <a href="#/" onClick={() => scrollTo("hero")}>Inicio</a>
+              <a href="#/" onClick={() => scrollTo("about")}>Sobre</a>
+              <a href="#/" onClick={() => scrollTo("features")}>Caracteristicas</a>
+              <a href="#/" onClick={() => scrollTo("media")}>Galeria</a>
             </div>
             <div className="footer-links">
               <h4>Soporte</h4>
