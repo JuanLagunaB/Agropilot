@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import Contact from "./Contact";
 import "./App.css";
 
@@ -59,7 +59,7 @@ function App() {
   const [imagenActiva, setImagenActiva] = useState(imagenesGaleria[0]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/contact" element={<Contact />} />
         <Route path="/" element={
@@ -305,7 +305,7 @@ function App() {
     </div>
         } />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
