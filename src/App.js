@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import Contact from "./Contact";
 import { sendMessageToBot } from "./chatbot";
@@ -21,6 +21,17 @@ function ChatBubble() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const chatBodyRef = useRef(null);
+
+  const scrollToBottom = () => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isOpen]);
 
   const toggleChat = () => setIsOpen(!isOpen);
 
@@ -36,6 +47,7 @@ function ChatBubble() {
     const botResponse = await sendMessageToBot(userMessage);
     setMessages((prev) => [...prev, { text: botResponse, sender: 'bot' }]);
     setIsLoading(false);
+    setTimeout(scrollToBottom, 50);
   };
 
 
@@ -47,7 +59,7 @@ return (
             <span>Mas informacion</span>
             <button onClick={toggleChat}>X</button>
           </div>
-          <div className="chat-body">
+          <div className="chat-body" ref={chatBodyRef}>
             {messages.map((m, i) => (
               <div key={i} className={`message ${m.sender}`}>
                 {m.text}
