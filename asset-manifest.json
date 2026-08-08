@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Agropilot/static/css/main.ef00bb8e.css",
-    "main.js": "/Agropilot/static/js/main.7b67a0bb.js",
+    "main.css": "/Agropilot/static/css/main.a5be9491.css",
+    "main.js": "/Agropilot/static/js/main.15998ba5.js",
     "static/js/453.ef018a59.chunk.js": "/Agropilot/static/js/453.ef018a59.chunk.js",
     "index.html": "/Agropilot/index.html",
-    "main.ef00bb8e.css.map": "/Agropilot/static/css/main.ef00bb8e.css.map",
-    "main.7b67a0bb.js.map": "/Agropilot/static/js/main.7b67a0bb.js.map",
+    "main.a5be9491.css.map": "/Agropilot/static/css/main.a5be9491.css.map",
+    "main.15998ba5.js.map": "/Agropilot/static/js/main.15998ba5.js.map",
     "453.ef018a59.chunk.js.map": "/Agropilot/static/js/453.ef018a59.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef00bb8e.css",
-    "static/js/main.7b67a0bb.js"
+    "static/css/main.a5be9491.css",
+    "static/js/main.15998ba5.js"
   ]
 }
