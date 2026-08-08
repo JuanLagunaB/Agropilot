@@ -63,18 +63,44 @@ app.post('/api/chat', async (req, res) => {
     });
 
     const qr = response.data.queryResult || {};
-    const reply = qr.fulfillmentText
-      || (qr.messages && qr.messages[0] && qr.messages[0].text && qr.messages[0].text.text && qr.messages[0].text.text[0])
-      || 'No entendi tu pregunta.';
+    const fulfillmentText = qr.fulfillmentText;
+    const messages = qr.fulfillmentMessages;
+    const firstText = messages && messages[0] && messages[0].text && messages[0].text.text && messages[0].text.text[0];
 
-    console.log('Intent matched:', qr.intent?.displayName);
-    console.log('FulfillmentText:', qr.fulfillmentText);
-    console.log('Reply sent:', reply);
+    const reply = fulfillmentText || firstText || 'No entendi tu pregunta.';
 
     res.json({ reply });
   } catch (error) {
     console.error('Error:', error.response?.data || error.message);
     res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/api/debug', async (req, res) => {
+  try {
+    const accessToken = await getAccessToken();
+    const projectId = process.env.DF_PROJECT_ID;
+    const sessionId = 'debug-' + Math.random().toString(36).substring(7);
+
+    const url = `https://dialogflow.googleapis.com/v2/projects/${projectId}/agent/sessions/${sessionId}:detectIntent`;
+
+    const response = await axios.post(url, {
+      queryInput: {
+        text: {
+          text: 'Hola',
+          languageCode: 'es',
+        },
+      },
+    }, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: error.message, details: error.response?.data });
   }
 });
 
