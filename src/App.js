@@ -131,7 +131,7 @@ function App() {
 
   const stats = [
     { value: "100%", label: "Educativo" },
-    { value: "4.8", label: "Rating" },
+    { value: "Gratis", label: "Para jugar" },
   ];
 
   const [imagenActiva, setImagenActiva] = useState(imagenesGaleria[0]);
