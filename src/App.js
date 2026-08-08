@@ -30,7 +30,7 @@ function ChatBubble() {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    setTimeout(scrollToBottom, 50);
   }, [messages, isOpen]);
 
   const toggleChat = () => setIsOpen(!isOpen);
