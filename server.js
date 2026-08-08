@@ -13,11 +13,19 @@ app.post('/api/chat', async (req, res) => {
     const { message } = req.body;
     const sessionId = Math.random().toString(36).substring(7);
 
+    let privateKey = process.env.DF_PRIVATE_KEY || '';
+    
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+      privateKey = privateKey.slice(1, -1);
+    }
+    
+    privateKey = privateKey.replace(/\\n/g, '\n').replace(/\\r/g, '');
+
     const credentials = {
-      type: process.env.DF_TYPE || 'service_account',
-      project_id: process.env.DF_PROJECT_ID || 'agropilotbot-ubcb',
+      type: 'service_account',
+      project_id: process.env.DF_PROJECT_ID,
       private_key_id: process.env.DF_PRIVATE_KEY_ID,
-      private_key: process.env.DF_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      private_key: privateKey,
       client_email: process.env.DF_CLIENT_EMAIL,
       client_id: process.env.DF_CLIENT_ID,
       auth_uri: process.env.DF_AUTH_URI,
@@ -25,6 +33,9 @@ app.post('/api/chat', async (req, res) => {
       auth_provider_x509_cert_url: process.env.DF_AUTH_PROVIDER_CERT,
       client_x509_cert_url: process.env.DF_CLIENT_CERT,
     };
+
+    console.log('Project ID:', projectId);
+    console.log('Private key starts with:', privateKey.substring(0, 30));
 
     const sessionClient = new dialogflow.SessionsClient({ credentials });
     const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
@@ -44,8 +55,8 @@ app.post('/api/chat', async (req, res) => {
 
     res.json({ reply: result.fulfillmentText });
   } catch (error) {
-    console.error('Error:', error.message);
-    res.status(500).json({ error: 'Error del servidor' });
+    console.error('Error completo:', error.message);
+    res.status(500).json({ error: error.message });
   }
 });
 
