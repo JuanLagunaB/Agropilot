@@ -1,8 +1,6 @@
-FROM node:16-slim
+FROM node:14-slim
 
 WORKDIR /app
-
-ENV NODE_OPTIONS=--openssl-legacy-provider
 
 COPY package*.json ./
 
