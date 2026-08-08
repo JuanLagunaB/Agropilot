@@ -1,12 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const dialogflow = require('@google-cloud/dialogflow');
+const { SessionsClient } = require('@google-cloud/dialogflow');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-const projectId = process.env.DF_PROJECT_ID || 'agropilotbot-ubcb';
 
 app.post('/api/chat', async (req, res) => {
   try {
@@ -15,11 +13,15 @@ app.post('/api/chat', async (req, res) => {
 
     let privateKey = process.env.DF_PRIVATE_KEY || '';
     
-    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
-      privateKey = privateKey.slice(1, -1);
+    privateKey = privateKey
+      .replace(/^"|"$/g, '')
+      .replace(/\\n/g, '\n')
+      .replace(/\\r/g, '')
+      .trim();
+
+    if (!privateKey.includes('-----BEGIN PRIVATE KEY-----')) {
+      throw new Error('Private key format invalid');
     }
-    
-    privateKey = privateKey.replace(/\\n/g, '\n').replace(/\\r/g, '');
 
     const credentials = {
       type: 'service_account',
@@ -34,11 +36,11 @@ app.post('/api/chat', async (req, res) => {
       client_x509_cert_url: process.env.DF_CLIENT_CERT,
     };
 
-    console.log('Project ID:', projectId);
-    console.log('Private key starts with:', privateKey.substring(0, 30));
-
-    const sessionClient = new dialogflow.SessionsClient({ credentials });
-    const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
+    const sessionClient = new SessionsClient({ credentials });
+    const sessionPath = sessionClient.projectAgentSessionPath(
+      process.env.DF_PROJECT_ID,
+      sessionId
+    );
 
     const request = {
       session: sessionPath,
@@ -55,7 +57,7 @@ app.post('/api/chat', async (req, res) => {
 
     res.json({ reply: result.fulfillmentText });
   } catch (error) {
-    console.error('Error completo:', error.message);
+    console.error('Error:', error.message);
     res.status(500).json({ error: error.message });
   }
 });
