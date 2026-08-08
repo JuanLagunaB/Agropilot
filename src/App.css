@@ -93,6 +93,17 @@
   font-weight: 500;
 }
 
+.message.loading {
+  font-style: italic;
+  color: #666;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
 .chat-footer {
   display: flex;
   padding: 8px;

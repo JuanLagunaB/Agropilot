@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import Contact from "./Contact";
+import { sendMessageToBot } from "./chatbot";
 import "./App.css";
 
 const BASE = process.env.PUBLIC_URL;
@@ -16,18 +17,25 @@ const imagenesGaleria = [
 function ChatBubble() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: '¡Hola! ¿Que quieres saber del proyecto?', sender: 'bot' }
+    { text: '¡Hola! Soy el asistente de Agropilot. En que te puedo ayudar?', sender: 'bot' }
   ]);
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleChat = () => setIsOpen(!isOpen);
 
-  const sendMessage = (e) => {
+  const sendMessage = async (e) => {
     e.preventDefault();
-    if (!input.trim()) return;
-    
-    setMessages([...messages, { text: input, sender: 'user' }]);
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = input.trim();
+    setMessages((prev) => [...prev, { text: userMessage, sender: 'user' }]);
     setInput('');
+    setIsLoading(true);
+
+    const botResponse = await sendMessageToBot(userMessage);
+    setMessages((prev) => [...prev, { text: botResponse, sender: 'bot' }]);
+    setIsLoading(false);
   };
 
 
@@ -45,6 +53,9 @@ return (
                 {m.text}
               </div>
             ))}
+            {isLoading && (
+              <div className="message bot loading">Escribiendo...</div>
+            )}
           </div>
           <form onSubmit={sendMessage} className="chat-footer">
             <input 
@@ -57,7 +68,7 @@ return (
         </div>
       )}
       <button className="chat-toggle-btn" onClick={toggleChat}>
-        💬
+        ...
       </button>
     </div>
   );
