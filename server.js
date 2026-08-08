@@ -27,7 +27,7 @@ async function getAccessToken() {
 
   const token = jwt.sign(payload, privateKey, { algorithm: 'RS256' });
 
-  const response = await axios.post('https://oauth2.googleapis.com/token', 
+  const response = await axios.post('https://oauth2.googleapis.com/token',
     new URLSearchParams({
       grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
       assertion: token,
@@ -62,13 +62,15 @@ app.post('/api/chat', async (req, res) => {
       },
     });
 
-    console.log('Full response:', JSON.stringify(response.data.queryResult, null, 2));
-    
-    const fulfillmentText = response.data.queryResult?.fulfillmentText;
-    const messages = response.data.queryResult?.messages;
-    const firstMessageText = messages?.[0]?.text?.text?.[0];
-    
-    const reply = fulfillmentText || firstMessageText || 'No entendi tu pregunta.';
+    const qr = response.data.queryResult || {};
+    const reply = qr.fulfillmentText
+      || (qr.messages && qr.messages[0] && qr.messages[0].text && qr.messages[0].text.text && qr.messages[0].text.text[0])
+      || 'No entendi tu pregunta.';
+
+    console.log('Intent matched:', qr.intent?.displayName);
+    console.log('FulfillmentText:', qr.fulfillmentText);
+    console.log('Reply sent:', reply);
+
     res.json({ reply });
   } catch (error) {
     console.error('Error:', error.response?.data || error.message);
