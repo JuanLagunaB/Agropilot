@@ -13,8 +13,55 @@ const imagenesGaleria = [
   { id: 5, src: `${BASE}/Panel educativo.png`, tag: 'Panel educativo', alt: 'Agropilot Screenshot 5' },
 ];
 
+function ChatBubble() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    { text: '¡Hola! ¿Que quieres saber del proyecto?', sender: 'bot' }
+  ]);
+  const [input, setInput] = useState('');
+
+  const toggleChat = () => setIsOpen(!isOpen);
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    
+    setMessages([...messages, { text: input, sender: 'user' }]);
+    setInput('');
+  };
 
 
+return (
+    <div className="chat-bubble-container">
+      {isOpen && (
+        <div className="chat-window">
+          <div className="chat-header">
+            <span>Mas informacion</span>
+            <button onClick={toggleChat}>X</button>
+          </div>
+          <div className="chat-body">
+            {messages.map((m, i) => (
+              <div key={i} className={`message ${m.sender}`}>
+                {m.text}
+              </div>
+            ))}
+          </div>
+          <form onSubmit={sendMessage} className="chat-footer">
+            <input 
+              value={input} 
+              onChange={(e) => setInput(e.target.value)} 
+              placeholder="Escribe un mensaje..." 
+            />
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      )}
+      <button className="chat-toggle-btn" onClick={toggleChat}>
+        💬
+      </button>
+    </div>
+  );
+}
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -310,6 +357,7 @@ function App() {
           </div>
         </div>
       </footer>
+      <ChatBubble />
     </div>
         } />
       </Routes>
