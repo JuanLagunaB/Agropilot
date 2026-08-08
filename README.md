@@ -28,38 +28,11 @@ Agropilot es un simulador educativo donde los jugadores pueden explorar el mundo
 
 - React 19
 - React Router
-- CSS3 con variables y animaciones
+- C# Y unity 2d
 - GitHub Pages (despliegue)
 - Dialogflow (chatbot)
 - Railway (backend)
 
-## Instalacion
-
-```bash
-# Clonar el repositorio
-git clone https://github.com/JuanLagunaB/Agropilot.git
-
-# Entrar al directorio
-cd agropilot
-
-# Instalar dependencias
-npm install
-
-# Ejutar en modo desarrollo
-npm start
-```
-
-La aplicacion estara disponible en `http://localhost:3000`
-
-## Despliegue
-
-```bash
-# Construir para produccion
-npm run build
-
-# Desplegar en GitHub Pages
-npm run deploy
-```
 
 ## Autores
 
