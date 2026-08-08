@@ -62,7 +62,8 @@ app.post('/api/chat', async (req, res) => {
       },
     });
 
-    const reply = response.data.queryResult?.fulfillmentText || 'No entendi tu pregunta.';
+    console.log('Response:', JSON.stringify(response.data, null, 2));
+    const reply = response.data.queryResult?.fulfillmentText || response.data.queryResult?.messages?.[0]?.text?.text?.[0] || 'No entendi tu pregunta.';
     res.json({ reply });
   } catch (error) {
     console.error('Error:', error.response?.data || error.message);
